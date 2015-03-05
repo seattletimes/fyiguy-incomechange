@@ -7,11 +7,11 @@ var element = document.querySelector("leaflet-map");
 var L = element.leaflet;
 var map = element.map;
 
-var ich = require("./lib/icanhazjs/ICanHaz.min");
+var ich = require("icanhaz");
 
 var change = require("./change.geo.json");
 
-var templateFile = require("./popup.html");
+var templateFile = require("./_popup.html");
 ich.addTemplate("popup", templateFile);
 
 function getColor(d) {
@@ -58,7 +58,18 @@ function resetHighlight(e) {
         mouseout: resetHighlight,
       });
 
-      layer.bindPopup(ich.popup(feature.properties))
+      var props = feature.properties;
+
+      layer.bindPopup(ich.popup({
+        name: props.namelsad10,
+        households: props.new_households,
+        low: props.low_pct * 100,
+        lowText: (props.low_pct * 100).toFixed(1),
+        medium: props.medium_pct * 100,
+        mediumText: (props.medium_pct * 100).toFixed(1),
+        high: props.high_pct * 100,
+        highText: (props.high_pct * 100).toFixed(1)
+      }))
     }
 
     geojson = window.geojson = L.geoJson(change, {

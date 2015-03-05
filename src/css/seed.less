@@ -44,5 +44,27 @@ body {
 
 }
 
+.chart {
+  overflow: hidden;
+  height: 20px;
+
+  .segment {
+    height: 100%;
+    float: left;
+
+    &.low {
+      background: blue;
+    }
+
+    &.medium {
+      background: green;
+    }
+
+    &.high {
+      background: yellow;
+    }
+  }
+}
+
 @import "leaflet-tweaks";
 @import "legend";
