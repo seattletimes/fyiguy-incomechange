@@ -6,22 +6,24 @@ require("component-responsive-frame");
 var element = document.querySelector("leaflet-map");
 var L = element.leaflet;
 var map = element.map;
-
 var ich = require("icanhaz");
-
+var $ = require('jQuery')
 var change = require("./change.geo.json");
-
 var templateFile = require("./_popup.html");
 ich.addTemplate("popup", templateFile);
 
-function getColor(d) {
-    return d > 800  ? '#004080' :
-           d > 600  ? '#1D55A3' :
-           d > 400  ? '#2561DB' :
-           d > 200   ? '#5A82EC' :
-           d > 0   ? '#C0CFFF' :
-                      '#C0CFFF';
-}
+var geojson;
+
+
+
+// function getColor(d) {
+//     return d > 0.8  ? '#093A63' :
+//            d > 0.6  ? '#f1eef6' :
+//            d > 0.4  ? '#bdc9e1' :
+//            d > 0.2   ? '#74a9cf' :
+//            d > 0   ? '#2b8cbe' :
+//                       '#093A63';
+// }
 
 function highlightFeature(e) {
   var layer = e.target;
@@ -39,17 +41,50 @@ function resetHighlight(e) {
   geojson.bringToBack();
 }
 
+  map.scrollWheelZoom.disable();
 
-  var style = function(feature) {
-    return {
-      color: '#ffffff',
-      fillColor: getColor(feature.properties.new_households),
-      weight: 0.5,
-      opacity: 0.9,
-      fillOpacity: 0.7
+
+  $(".type-button").click(function() {
+
+    var colors  = {
+      low_pct: "#bacdea",
+      medium_pct: "#599dc1",
+      high_pct: "#026672"
+
     }
-  };
 
+    function getColor(d) {
+      var column = colors[type];
+
+        return d > 0   ? column :
+                          '#B3B3B3';
+    }
+
+    $("#menu a.selected").removeClass("selected");
+    $(this).addClass("selected");
+
+    var type = $(this).data("type");
+      if (geojson) map.removeLayer(geojson);
+
+      $(".change1").css("background-color", colors[type]);
+
+    $("#menu a").css("background-color", "#ffffff");
+    $("#menu a.selected").css("background-color", colors[type]);
+
+    document.body.className = type;
+
+    
+
+    var style = function(feature) {
+      var column = feature.properties[type];
+      return {
+        color: getColor(column, type),
+        fillColor: getColor(column, type),
+        weight: 1,
+        opacity: 0.8,
+        fillOpacity: 0.6
+      }
+    };
 
     function onEachFeature(feature, layer) {
 
@@ -62,7 +97,7 @@ function resetHighlight(e) {
 
       layer.bindPopup(ich.popup({
         name: props.namelsad10,
-        households: props.new_households,
+        households: (props.new_households).toFixed(0),
         low: props.low_pct * 100,
         lowText: (props.low_pct * 100).toFixed(1),
         medium: props.medium_pct * 100,
@@ -77,4 +112,7 @@ function resetHighlight(e) {
       onEachFeature: onEachFeature
     }).addTo(map);
 
-  map.scrollWheelZoom.disable();
+
+  });
+
+$(".type-button:first").click();

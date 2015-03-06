@@ -1,11 +1,19 @@
 <div class="bigheader">{{name}}</div>
 <div class="popuptext">
-  <div>New households: <span class="mediumheader">{{households}}</span></div>
+  <div>"New" households: <span class="mediumheader">{{households}}</span></div>
+  <!-- <ul class="numbers">
+    <li ><span class="lownumber"></span> Low<br>{{lowText}}%
+    <li ><span class="midnumber"></span> Medium<br>{{mediumText}}%
+    <li ><span class="highnumber"></span> High<br>{{highText}}%
+  </ul> -->
+
   <ul class="numbers">
-    <li> Low: {{lowText}}%
-    <li> Medium: {{mediumText}}%
-    <li> High: {{highText}}%
+    <li style="text-align:left;" ><span class="lownumber">Low</span><br><strong>{{lowText}}%</strong>
+    <li ><span class="midnumber">Medium</span><br><strong>{{mediumText}}%</strong>
+    <li style="text-align:right;"><span class="highnumber">High</span><br><strong>{{highText}}%</strong>
   </ul>
+
+
   <div class="chart">
     <div class="segment low" style="width: {{low}}%"></div>
     <div class="segment medium" style="width: {{medium}}%"></div>

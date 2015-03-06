@@ -11,10 +11,15 @@
 @mobile: ~"(max-width: 480px)";
 @tablet: ~"(max-width: 800px)";
 
+@lowcolor: ~"#bacdea";
+@mediumcolor: ~"#599dc1";
+@highcolor: ~"#026672";
+
 body {
   padding: 0;
   margin: 0;
 }
+
 
 .aspect-ratio-outer {
   width: 100%;
@@ -44,26 +49,171 @@ body {
 
 }
 
+.bigheader {
+  line-height:90%;
+  font-size:16px;
+  font-family: 'Helvetica Neue', arial;
+  font-weight: bold;
+  text-align:center;
+  padding:8px 0;
+  line-height:1.2;
+
+}
+.mediumheader {
+  font-size:15px;
+  font-family: 'Helvetica', arial, sans-serif; 
+  font-weight: bold; 
+  padding-bottom:5px;
+}
+
+
+.lilheader {
+  font-size: 12px; 
+  font-family:'Helvetica Neue', arial;
+  text-transform:uppercase; 
+  text-align:center; 
+}
+
+.numbers {
+  list-style-type: none;
+  position: relative;
+  clear: both;
+   display: flex;
+   display:-webkit-flex;
+   display:-moz-flex;
+
+   // .lownumber {
+   //  font-weight: bold;
+   //  display: block;
+   // }
+
+   // .midnumber {
+   // font-weight: bold;
+   //  display: block;
+   // }
+
+   // .highnumber {
+   // font-weight: bold;
+   //  display: block;
+   // }
+}
+
+ul.numbers {
+     padding: 0;
+    margin: 0;
+    list-style-type: none;
+    overflow: auto;
+    text-align: center;
+    padding: 6px 0;
+}
+
+.numbers li {
+   list-style-type: none;
+   flex: 1;
+    -webkit-flex:1;
+
+    .lownumber {
+
+      // margin-right: 2px;
+      font-weight: bold;
+      // background-color: @lowcolor;
+      color: @lowcolor;
+      text-transform:uppercase;
+    // border-top: 3px solid @lowcolor;
+
+
+  }
+
+  .midnumber {
+
+      // margin-right: 2px;
+      font-weight: bold;
+      color: @mediumcolor;
+       text-transform:uppercase;
+    // border-top: 3px solid @mediumcolor;
+
+  }
+
+  .highnumber {
+
+      // margin-right: 2px;
+      font-weight: bold;
+      color: @highcolor;
+       text-transform:uppercase;
+    // border-top: 3px solid @highcolor;
+
+  }
+}
+
+
 .chart {
+  clear: both;
   overflow: hidden;
   height: 20px;
+  min-width: 200px;
 
   .segment {
     height: 100%;
     float: left;
 
     &.low {
-      background: blue;
+      background: @lowcolor;
     }
 
     &.medium {
-      background: green;
+      background: @mediumcolor;
     }
 
     &.high {
-      background: yellow;
+      background: @highcolor;
     }
   }
+}
+
+.dog-menu {
+  margin-top: 10px;
+  display: flex;
+   display:-webkit-flex;
+   display:-moz-flex;
+
+   @media @tablet {
+    font-size: 14px;
+   }
+
+  @media @mobile {
+    font-size: 12px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  & > a, & > label {
+    max-width: 33%;
+    display: inline-block;
+    vertical-align: bottom;
+    flex: 1;
+    -webkit-flex:1;
+    text-align: center;
+    margin: 4px;
+
+    @media @mobile {
+    }
+  }
+}
+
+.type-button:hover { color: black; background: lightgray; }
+#menu a.selected  { color: white; background: gray; }
+
+
+.type-button { 
+  padding: 6px 8px;
+  line-height: 1.2;
+  color: gray;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: 'Helvetica Neue', arial;
+  font-weight: bold;
 }
 
 @import "leaflet-tweaks";

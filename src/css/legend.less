@@ -53,9 +53,21 @@ aside.legend {
   }
 
   cite.source {
-    font-size: 70%;
-    color: #999;
     clear: both;
+    line-height: 1.2;
+    font-size: 80%;
+    color: #999;
     font-style: normal;
+    max-width: 150px;
+
+    .legend-credit {
+      display: block;
+
+       @media @tablet {
+        clear: both;
+        float: right;
+      }
+
+    }
   }
 }
