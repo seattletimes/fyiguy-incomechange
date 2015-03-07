@@ -49,8 +49,14 @@ function resetHighlight(e) {
     var colors  = {
       low_pct: "#bacdea",
       medium_pct: "#599dc1",
-      high_pct: "#026672"
+      high_pct: "#400080"
 
+    }
+
+    var legendtype = {
+      low_pct: "the low",
+      medium_pct: "the middle",
+      high_pct: "the high"
     }
 
     function getColor(d) {
@@ -64,6 +70,9 @@ function resetHighlight(e) {
     $(this).addClass("selected");
 
     var type = $(this).data("type");
+
+        $("#instertext").text(legendtype[type]);
+        
       if (geojson) map.removeLayer(geojson);
 
       $(".change1").css("background-color", colors[type]);
