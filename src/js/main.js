@@ -54,9 +54,9 @@ function resetHighlight(e) {
     }
 
     var legendtype = {
-      low_pct: "the low",
-      medium_pct: "the middle",
-      high_pct: "the high"
+      low_pct: "low",
+      medium_pct: "middle",
+      high_pct: "high"
     }
 
     function getColor(d) {
@@ -103,6 +103,8 @@ function resetHighlight(e) {
       });
 
       var props = feature.properties;
+
+
 
       layer.bindPopup(ich.popup({
         name: props.namelsad10,

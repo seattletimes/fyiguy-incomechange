@@ -16,7 +16,7 @@
 
 
 
-@lowcolor: ~"#bacdea";
+@lowcolor: ~"#96B3E5";
 @mediumcolor: ~"#599dc1";
 @highcolor: ~"#400080";
 
@@ -26,6 +26,10 @@ body {
   margin: 0;
 }
 
+.note {
+  font-size: 80%;
+  padding-top: 8px;
+}
 
 .aspect-ratio-outer {
   width: 100%;
@@ -177,6 +181,12 @@ ul.numbers {
   }
 }
 
+hr {
+  border: 0;
+  border-bottom: 1px dashed #ccc;
+  background: #999;
+}
+
 .dog-menu {
   margin-top: 10px;
   display: flex;
@@ -221,6 +231,13 @@ ul.numbers {
   cursor: pointer;
   font-family: @df-sans;
   font-weight: bold;
+
+  .sm_btn_text {
+    display: block;
+    font-size: 70%;
+    font-weight: normal;
+    font-family: @df-serif;
+  }
 }
 
 @import "leaflet-tweaks";

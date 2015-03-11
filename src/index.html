@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
     <%= t.include("partials/_adHead.html") %>
-    <script>
+        <script>
     (function(d) {
     var config = {
       kitId: 'rvq5yyp',
@@ -15,15 +15,16 @@
     h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
     })(document);
     </script>
+
   </head>
   <body>
 
     <responsive-child class="map-container">
 
     <div id='menu' class="dog-menu">
-      <a class="selected type-button" data-type="low_pct">Low income</a> 
-      <a class="type-button" data-type="medium_pct">Middle income</a> 
-      <a class="type-button" data-type="high_pct">High income</a> 
+      <a class="selected type-button" data-type="low_pct">Low income <span class="sm_btn_text">Less than $35,000</span></a> 
+      <a class="type-button" data-type="medium_pct">Middle income <span class="sm_btn_text">$35,000 to $125,000</span></a> 
+      <a class="type-button" data-type="high_pct">High income <span class="sm_btn_text">More than $125,000</span></a> 
     </div>
 
       <div class="aspect-ratio-outer">
@@ -38,13 +39,15 @@
 
       <aside class="legend">
        
-        <h1>For <span id="instertext"></span> income bracket:</h1>
+        <h1>Change in <span id="instertext"></span> income households since 2000:</h1>
         <ul class="scale">
-          <li> <span class="block change1" style="background-color: yellow"></span> Added households
-          <li> <span class="block" style="background-color: #B3B3B3"></span> Did not add households
+          <li> <span class="block change1" style="background-color: yellow"></span> Increase
+          <li> <span class="block" style="background-color: #B3B3B3"></span> No change or decrease
         </ul>
        <cite class="source">Sources: 2000 Census; 2013 5-year ACS<span class="legend-credit">Map by Garland Potts / The Seattle Times</span></cite>
       </aside>
+
+     
     </responsive-child>
 
     <script src="app.js"></script>
